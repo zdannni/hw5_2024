@@ -1,0 +1,160 @@
+/* Step 1: Logo animation that starts at a width of 25px and zero opacity. Gradually grows to a width of 475px and turns fully visible over 5 seconds. Only happens once when the page is loaded.*/
+@keyframes mymove{
+    0% {width: 25px; opacity: 0;}
+    100% {width: 475px;opacity: 1;}
+}
+#logo{
+    animation: mymove 5s 1;
+}
+
+/* Step 2:
+Edit the body element to use the Poppins font with serif as a backup. */
+body {
+    font-family: "Poppins", serif;
+    /* Use the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1. */
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Step 3: Set the header tag to be flex containers that stack vertically and align horizontally */
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Step 4: Edit the nav_links class to use flex and stack vertically */
+
+.nav_links{
+    display:flex;
+    flex-direction: column;
+}
+
+/* Step 5: Style the links so that they have the same color even after they have been visited */
+a:visited{
+    color: blue;
+}
+
+/* Step 6: Style header elements that are direct children of a card class so that
+they have a background color of #288088,
+2px solid-style borders that use a color of #45ADAD,
+20px of padding on the top and the bottom,
+and 50px border-radius on the top left and right corners.  */
+
+.card > header{
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-radius: 50px 50px 0px 0px;
+}
+
+.card{
+    border-radius: 50px 50px 0 0;
+
+}
+
+/* Step 7 & 8: specify an initial width of 450px for the card class  */
+
+.card{
+    width:450px;
+}
+/* Edit the css for the pricing class to use flex that stacks vertically and is horizontally center aligned */
+
+.pricing{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 9: Style the images in the gallery class so that they have
+a solid 10px border with a color of #50C7C7,
+10px margin on all four sides,
+and a width of 300px.   */
+
+.gallery img{
+    border: solid 10px #50c7c7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10: Edit the css for the gallery class to use flex to be vertically center aligned and wrap content when needed*/
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* For screen size greater than 900px */
+@media screen and (min-width:900px){
+    /* Step 11 */
+
+    /* Edit the header tag to position the logo to the far left */
+header {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+    /* Position the links in the nav_links class to the far right */
+.nav_links{
+        flex-direction: row;
+    }
+
+    /* Step 12 */
+    /* Stak the flex items in the pricing class horizontally and center aligned  */
+    .pricing{
+        flex-direction: row;
+        justify-content: center;
+
+    }
+    /* Use flex-basis to specify a “size” of 275px */
+    .card{
+        flex-basis: 275px;
+    }
+    /* Step 13: checklater*/
+    body > header:first-child{
+        position: sticky;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+#logo {
+    animation:none;
+}
+}
+
+@media print{
+    body{
+        /* Step 15: Change the font on body to Arial with a backup value of Helvetica */
+        font-family: Arial, Helvetica;
+        /* Step 16: Remove background image */
+        background-image: none;
+    }
+    /* Step 17: Edit the nav/nav_links elements so that they are spaced evenly */
+
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    /* Step 18: Edit the pricing class so that the elements align along the bottom. */
+
+    .pricing{
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    /* Step 19: Edit the card elements to give them a solid border 2px of #45ADDD and use flex-basis of 325px.  */
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    /* Step 20: Hide the gallery */
+    .gallery{
+        display: none;
+    }
+    /* Step 21: add thumbs up emoji to the end of the content in the 2nd element in a list under the card class */
+    .card ul li:nth-child(2)::after{
+        content: '\1F44D';
+    }
+}
